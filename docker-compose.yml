@@ -8,13 +8,12 @@ services:
       - ./conf/smb.conf:/etc/samba/smb.conf:ro
       - /data/videotheque:/data/videotheque:ro
     networks:
-      - samba_net
+      samba_net:
+        ipv4_address: 192.168.2.10
 
 networks:
   samba_net:
     ipam:
       config:
         - subnet: 192.168.2.0/24
-          aux_addresses: 
-            samba-video: 192.168.2.2
 
