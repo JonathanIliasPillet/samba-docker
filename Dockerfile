@@ -10,10 +10,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN \
 apt-get update && \
-apt-get install -y tini && \
 apt-get install -y locales tzdata && \
 localedef -i fr_FR -c -f UTF-8 -A /usr/share/locale/locale.alias fr_FR.UTF-8 && \
-apt-get install -y samba smbclient smbldap-tools winbind samba-dsdb-modules samba-vfs-modules && \
+apt-get install -y tini \
+                   samba smbclient smbldap-tools winbind samba-dsdb-modules samba-vfs-modules \
+                   wireguard iproute2 openresolv && \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/* 
 

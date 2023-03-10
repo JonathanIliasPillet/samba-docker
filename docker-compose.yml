@@ -3,9 +3,15 @@ version: '2.2'
 services:
   samba-video:
     build: .
-    image: ismael49/samba:v1
+    image: ismael49/samba:v2
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - WG_CONF_NAME=freyja
     volumes:
       - ./conf/smb.conf:/etc/samba/smb.conf:ro
+      - ./conf/freyja.conf:/etc/wireguard/freyja.conf:ro
       - /data/videotheque:/data/videotheque:ro
     networks:
       samba_net:

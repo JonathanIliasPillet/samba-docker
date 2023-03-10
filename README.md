@@ -10,6 +10,9 @@ According to the path given in this configuration, you should provide a `conf/sm
 
 In the example, `/data/videotheque` is a host directory that I want to share. There is a corresponding entry in `smb.conf`.
 
-## Future improvments
+## Using Wireguard endpoint
 
-I think about adding a wireguard client into the container. Thus it will be easy to provide many samba servers in differents VPN.
+By setting `WG_CONF_NAME` environment, you can choose to setup a wireguard client interface (wg-quick setup format) before launching samba. If environment is left empty or doesn't exist, no wireguard setup is done.
+
+If set, the configuration file must be provided via a volume in `/etc/wireguard` directory as in the `docker-compose.yml` example. The config file name and the name given in `WG_CONF_NAME` environment variable must match as wg-quick requires the name and the config file matches.
+
